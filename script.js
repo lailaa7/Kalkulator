@@ -1,7 +1,7 @@
 const calculatorScreen = document.querySelector('.calculator-screen')
 
-const updateScreen = (number) => {
-    calculatorScreen.value = number
+const updateScreen = (number, operator) => {
+    calculatorScreen.value = number, operator
 }
 
 const numbers = document.querySelectorAll(".number")
@@ -37,9 +37,9 @@ const operators = document.querySelectorAll(".operator")
 
 operators.forEach((operator) => {
     operator.addEventListener("click", (event) => {
-        inputOperator(event.target.value)
+        // inputOperator(event.target.value)
         // updateScreen(currentNumber)
-        // console.log('operator button is pressed')
+        console.log(event.target.value)
     })
 })
 
@@ -50,6 +50,14 @@ const inputOperator = (operator) => {
     calculationOperator = operator
     currentNumber = ''
 }
+
+operators.forEach((operator) => {
+    operator.addEventListener("click", (event) => {
+        inputOperator(event.target.value)
+        updateScreen(calculationOperator)
+        // console.log(event.target.value)
+    })
+})
 
 const equalSign = document.querySelector(".equal-sign")
 // console.log(numbers)
